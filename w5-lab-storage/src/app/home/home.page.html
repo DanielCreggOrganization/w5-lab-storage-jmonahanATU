@@ -17,5 +17,11 @@
   </ion-item>
   <ion-button expand="full" (click)="setItem()">Set Item</ion-button>
   <ion-button expand="full" (click)="getItem()">Get Item</ion-button>
+
+  <ion-button expand="full" color="danger" (click)="removeItem()">Remove Item</ion-button>
+  <ion-button expand="full" color="danger" (click)="clearStorage()">Clear All Items</ion-button>
+  <ion-button expand="full" (click)="getKeys()">Get All Keys</ion-button>
+  <ion-button expand="full" (click)="getLength()">Get Number of Items</ion-button>
+  <ion-button expand="full" (click)="iterateItems()">Iterate Over Items</ion-button>
   <p>{{ output }}</p>
 </ion-content>

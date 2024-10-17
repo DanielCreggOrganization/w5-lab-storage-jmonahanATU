@@ -38,4 +38,56 @@ export class HomePage {
       this.output = `Error getting item: ${error}`;
     }
   }
+    // New methods
+  async removeItem() {
+    try {
+      await this.storage.remove(this.key);
+      this.output = `Removed ${this.key}`;
+    } catch (error) {
+      console.error('Error removing item', error);
+      this.output = `Error removing item: ${error}`;
+    }
+  }
+
+  async clearStorage() {
+    try {
+      await this.storage.clear();
+      this.output = 'All items cleared';
+    } catch (error) {
+      console.error('Error clearing storage', error);
+      this.output = `Error clearing storage: ${error}`;
+    }
+  }
+
+  async getKeys() {
+    try {
+      const keys = await this.storage.keys();
+      this.output = `Keys: ${keys.join(', ')}`;
+    } catch (error) {
+      console.error('Error getting keys', error);
+      this.output = `Error getting keys: ${error}`;
+    }
+  }
+
+  async getLength() {
+    try {
+      const length = await this.storage.length();
+      this.output = `Number of items: ${length}`;
+    } catch (error) {
+      console.error('Error getting length', error);
+      this.output = `Error getting length: ${error}`;
+    }
+  }
+
+  async iterateItems() {
+    try {
+      this.output = '';
+      await this.storage.forEach((value, key, index) => {
+        this.output += `${Number(index) + 1}. ${key}: ${value}\n`;
+      });
+    } catch (error) {
+      console.error('Error iterating items', error);
+      this.output = `Error iterating items: ${error}`;
+    }
+  }
 }
